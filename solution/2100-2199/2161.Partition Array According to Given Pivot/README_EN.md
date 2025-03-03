@@ -198,6 +198,33 @@ function pivotArray(nums: number[], pivot: number): number[] {
     return ans;
 }
 ```
+#### PHP
+
+```php
+function pivotArray($nums, $pivot) {
+    $result = [];
+    $middle = 0; // Position to insert pivot elements
+    foreach ($nums as $num) {
+        if ($num < $pivot) {
+            $result[] = $num; // Append smaller elements
+        } elseif ($num == $pivot) {
+            $middle++; // Count pivot occurrences
+        }
+    }
+    // Insert pivot elements in one go
+    while ($middle--) {
+        $result[] = $pivot;
+    }
+    foreach ($nums as $num) {
+        if ($num > $pivot) {
+            $result[] = $num; // Append larger elements
+        }
+    }
+    return $result;
+}
+//time complexity (O(n)) & space complexity (O(1))
+
+```
 
 <!-- tabs:end -->
 
